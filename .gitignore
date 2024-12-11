@@ -214,3 +214,7 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,angular,python
+
+# Docker
+# Ensures no sensitive data is committed.
+docker-compose.yaml
