@@ -11,3 +11,11 @@ N.B. this application is a Work-In-Progress, and the current state may not refle
 - Frontend: AngularJS
 - Backend: .NET Core, Python
 - Database: MySQL
+
+## Packages
+
+Nuget packages used in the app
+
+| Package                          | NuGet           |
+| ---------------------------------|:---------------:|
+| Swashbuckle.AspNetCore           | [![NuGet Swashbuckle.AspNetCore](https://img.shields.io/nuget/v/Swashbuckle.AspNetCore.svg?style=flat)](https://www.nuget.org/packages/swashbuckle.aspnetcore/) |
