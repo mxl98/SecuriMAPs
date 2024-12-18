@@ -20,6 +20,11 @@ $sidebar-width: 100px;
 2.1 GENERAL STYLES
 */
 
+:root {
+    // i prefer the light mode, so i'm keeping this commented until i'm done
+    //color-scheme: light dark;
+}
+
 main {
     width: 100%;
     min-height: $map-height;
@@ -75,6 +80,9 @@ body {
     min-width: calc($sidebar-width - 2em);
     height: $map-height;
     padding: 1em;
+
+    color: light-dark(#222, #eee);
+    background-color: light-dark(#fff, #232323);
 }
 
 @media (max-width: 768px) {
