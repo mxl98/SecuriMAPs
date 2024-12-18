@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import L from 'leaflet';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-map',
@@ -17,13 +18,25 @@ export class MapComponent {
       zoom: 12
     });
 
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // For OpenStreetMap-sourced tiles, comment if using another source
+    // const osmTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //   maxZoom: 19,
+    //   minZoom: 12,
+    //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    // });
+
+    // osmTiles.addTo(this.map);
+
+    // For MapBox-sourced tiles, comment if using another source because of pricing
+    const mapboxTiles = L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`, {
       maxZoom: 19,
       minZoom: 12,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      attribution: '&copy; <a href="https://www.mapbox.com/">MapBox</a>',
+      tileSize: 512,
+      zoomOffset: -1
     });
 
-    tiles.addTo(this.map);
+    mapboxTiles.addTo(this.map);
   }
 
   constructor() {}
