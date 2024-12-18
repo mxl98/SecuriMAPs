@@ -4,6 +4,7 @@
 2. GLOBAL STYLES
     2.1 GENERAL
     2.2 MAP STYLES
+    2.3 SIDEBAR STYLES
 =============================
 */
 
@@ -12,11 +13,28 @@
 */
 
 $map-height: 100vh;
+$sidebar-width: 100px;
 
 /* 2. GLOBAL STYLES
 =============================
 2.1 GENERAL STYLES
 */
+
+main {
+    width: 100%;
+    min-height: $map-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: inherit;
+    position: relative;
+}
+
+.content {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
 
 body {
     margin: 0px;
@@ -24,22 +42,43 @@ body {
 
 /*
 =============================
-2.2 MAP STYLES PLACEHOLDER
+2.2 MAP STYLES
 */
 
 .map-container {
     position: absolute;
     top: 0;
-    left: 0;
+    left: $sidebar-width;
     right: 0;
     bottom: 0;
-  }
+}
   
-  .map-frame {
-    border: 2px solid black;
+#map {
     height: $map-height;
-  }
-  
-  #map {
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        left: 0;
+    }
+}
+
+/*
+=============================
+2.3 SIDEBAR STYLES
+*/
+
+#sidebar {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: calc($sidebar-width - 2em);
     height: $map-height;
-  }
+    padding: 1em;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        display: none;
+    }
+}
