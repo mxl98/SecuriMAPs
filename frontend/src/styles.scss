@@ -2,7 +2,8 @@
 =============================
 1. GLOBAL VARIABLES
 2. GLOBAL STYLES
-    2.1 MAP STYLES
+    2.1 GENERAL
+    2.2 MAP STYLES
 =============================
 */
 
@@ -10,11 +11,20 @@
 =============================
 */
 
-$map-height: 800px;
+$map-height: 100vh;
 
 /* 2. GLOBAL STYLES
 =============================
-2.1 MAP STYLES PLACEHOLDER
+2.1 GENERAL STYLES
+*/
+
+body {
+    margin: 0px;
+}
+
+/*
+=============================
+2.2 MAP STYLES PLACEHOLDER
 */
 
 .map-container {
@@ -23,7 +33,6 @@ $map-height: 800px;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: 30px;
   }
   
   .map-frame {
