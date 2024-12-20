@@ -15,8 +15,9 @@
 */
 
 $map-height: 100vh;
-
 $sidebar-width: 100px;
+
+$z-overmap: 1000; // pretty high, doesn't display over map otherwise
 
 $button-large: 48px;
 
@@ -65,7 +66,7 @@ svg {
 .map-container {
     position: absolute;
     top: 0;
-    left: $sidebar-width;
+    left: calc($sidebar-width - 1em);
     right: 0;
     bottom: 0;
 }
@@ -87,14 +88,24 @@ svg {
 
 #sidebar {
     display: inline-flex;
+}
+
+.sidebar-container {
+    position: absolute;
+    top: 0;
     flex-direction: column;
     align-items: center;
-    min-width: calc($sidebar-width - 2em);
-    height: $map-height;
+    min-width: calc($sidebar-width - 2em); // makes the map flow under the sidebar corners
+    height: calc($map-height - 2em);
     padding: 1em;
+    z-index: $z-overmap;
+
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 
     color: light-dark(#222, #eee);
-    background-color: light-dark(#fff, #232323);
+    background: light-dark(#fff, #232323);
+    box-shadow: 0px 2px 5px #aaa;
 }
 
 @media (max-width: $mobile-maxwidth) {
@@ -115,8 +126,8 @@ svg {
     column-gap: 10px;
     align-items: center;
 
-    z-index: 1000; // pretty high, doesn't display over map otherwise
-    margin-left: 4em;
+    z-index: $z-overmap;
+    margin-left: 5em;
     margin-top: 1em;
     height: $button-large;
 }
@@ -138,6 +149,52 @@ svg {
 =============================
 2.5 BUTTONS STYLES
 */
+
+@media (min-width: $mobile-maxwidth) {
+    // overrides starter style to accomodate desktop sidebar overflow
+    .leaflet-left {
+        left: 2em;
+    }
+}
+
+// removes border to fit style
+.leaflet-touch .leaflet-bar {
+    border: 0;
+    outline: 0;
+}
+
+// fits button style
+.leaflet-touch .leaflet-bar a:first-child {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 0px 3px 5px #888;
+
+    &:hover {
+        background: #f4f4f4;
+        box-shadow: 0px 2px 6px #666;
+    }
+    
+    &:active {
+        background: #eaeaea;
+        box-shadow: 0px 2px 3px #444;
+    }
+}
+
+.leaflet-touch .leaflet-bar a:last-child {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    box-shadow: 0px 3px 5px #888;
+
+    &:hover {
+        background: #f4f4f4;
+        box-shadow: 0px 2px 6px #666;
+    }
+    
+    &:active {
+        background: #eaeaea;
+        box-shadow: 0px 2px 3px #444;
+    }
+}
 
 // this needs to be aligned with the +/- zoom buttons from the map
 .sq-button-container {
