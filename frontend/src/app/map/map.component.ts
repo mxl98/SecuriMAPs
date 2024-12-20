@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import L from 'leaflet';
 import { environment } from '../../environments/environment';
 import { MapService } from '../map.service';
-import { ResetButtonComponent } from '../reset-button/reset-button.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-map',
   standalone: true,
   imports: [
-    ResetButtonComponent
+    NavbarComponent,
   ],
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
