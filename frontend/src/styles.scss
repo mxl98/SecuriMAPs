@@ -20,6 +20,8 @@ $sidebar-width: 100px;
 
 $button-large: 48px;
 
+$mobile-maxwidth: 768px;
+
 /* 2. GLOBAL STYLES
 =============================
 2.1 GENERAL STYLES
@@ -95,7 +97,7 @@ svg {
     background-color: light-dark(#fff, #232323);
 }
 
-@media (max-width: 768px) {
+@media (max-width: $mobile-maxwidth) {
     #sidebar {
         display: none;
     }
@@ -117,6 +119,19 @@ svg {
     margin-left: 4em;
     margin-top: 1em;
     height: $button-large;
+}
+
+@media (max-width: $mobile-maxwidth) {
+    .button-navbar {
+        bottom: 0px;
+        right: 0px;
+
+        flex-direction: column-reverse;
+        row-gap: 10px;
+
+        margin-right: 10px;
+        margin-bottom: 20px;
+    }
 }
 
 /*
