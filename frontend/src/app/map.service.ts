@@ -26,8 +26,13 @@ export class MapService {
    * Initializes the map centered on Montreal, Canada.
    */
   initMap(): void {
+    const swPoint = new L.LatLng(45.3, -73.17),
+          nePoint = new L.LatLng(45.8, -74.27),
+          bounds = new L.LatLngBounds(swPoint, nePoint);
+
     this.map = L.map('map', {
       center: [45.5, -73.57],
+      maxBounds: bounds,
       zoom: 12
     });
 
