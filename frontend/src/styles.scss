@@ -3,8 +3,9 @@
 1. GLOBAL VARIABLES
 2. GLOBAL STYLES
     2.1 GENERAL
-    2.2 MAP STYLES
-    2.3 SIDEBAR STYLES
+    2.2 MAP
+    2.3 SIDEBAR
+    2.4 BUTTONS
 =============================
 */
 
@@ -13,7 +14,10 @@
 */
 
 $map-height: 100vh;
+
 $sidebar-width: 100px;
+
+$button-large: 48px;
 
 /* 2. GLOBAL STYLES
 =============================
@@ -43,6 +47,11 @@ main {
 
 body {
     margin: 0px;
+}
+
+svg {
+    stroke: #333;
+    stroke-width: 3px;
 }
 
 /*
@@ -90,3 +99,38 @@ body {
         display: none;
     }
 }
+
+/*
+=============================
+2.4 BUTTONS STYLES
+*/
+
+// this needs to be aligned with the +/- zoom buttons from the map
+.sq-button-container {
+    position: absolute;
+    top: 2em;
+    left: 4em;
+    z-index: 1000; // pretty high, doesn't display over map otherwise
+
+    & button {
+        cursor: pointer;
+
+        height: $button-large;
+        width: $button-large;
+        padding: 0px;
+        
+        border-radius: calc($button-large / 2);
+        border: 0;
+        outline: 0;
+
+        background: #fff;
+        box-shadow: 0px 3px 5px #888;
+
+        &:hover {
+            background: #f4f4f4;
+            box-shadow: 0px 2px 6px #666;
+        }
+        // TODO ADD ONCLICK EFFECT (darken background, maybe animation?)
+    }
+}
+

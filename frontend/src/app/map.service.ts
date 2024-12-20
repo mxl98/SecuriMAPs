@@ -14,7 +14,8 @@ export class MapService {
       'light': `https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`,
       'dark':  `https://api.mapbox.com/styles/v1/${ environment.mapboxUsername }/cm4ubpdkk00aa01qpgd9ahtfi/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`
     };
-    private map: any;
+    private centerPoint = new L.LatLng(45.5, -73.57);
+    private map: L.Map | null = null;
     private isDarkMode: boolean = false;
 
   constructor() {
@@ -24,6 +25,8 @@ export class MapService {
 
   /**
    * Initializes the map centered on Montreal, Canada.
+   * The map is bounded to include Montreal and its direct surroundings,
+   * and uses the correct style based on the browser theme.
    */
   initMap(): void {
     const swPoint = new L.LatLng(45.3, -73.17),
@@ -31,7 +34,7 @@ export class MapService {
           bounds = new L.LatLngBounds(swPoint, nePoint);
 
     this.map = L.map('map', {
-      center: [45.5, -73.57],
+      center: this.centerPoint,
       maxBounds: bounds,
       zoom: 12
     });
@@ -55,5 +58,14 @@ export class MapService {
     });
     
     mapboxTiles.addTo(this.map);
+  }
+
+  /**
+   * Resets the map view to the initial position
+   */
+  resetMap(): void {
+    this.map?.setView(this.centerPoint, 12, {
+      animate: true
+    });
   }
 }
