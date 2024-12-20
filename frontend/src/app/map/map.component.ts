@@ -10,6 +10,10 @@ import { MapService } from '../map.service';
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
+
+/**
+ * Represents the interactible map section.
+ */
 export class MapComponent {
   private _mapService: MapService;
 
