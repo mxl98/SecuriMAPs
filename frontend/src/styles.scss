@@ -66,7 +66,7 @@ svg {
 .map-container {
     position: absolute;
     top: 0;
-    left: calc($sidebar-width - 1em);
+    left: 0;
     right: 0;
     bottom: 0;
 }
@@ -108,8 +108,22 @@ svg {
     box-shadow: 0px 2px 5px #aaa;
 }
 
+.sidebar-drawer {
+    position: absolute;
+    top: calc($map-height / 2 - $button-large * 0.75);
+    z-index: $z-overmap;
+
+    height: calc($button-large * 1.5);
+    width: calc($button-large / 2);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    background: light-dark(#ffffff86, #23232386);
+    box-shadow: 0px 2px 5px #aaa;
+}
+
 @media (max-width: $mobile-maxwidth) {
-    #sidebar {
+    #sidebar, .sidebar-drawer {
         display: none;
     }
 }
@@ -127,7 +141,7 @@ svg {
     align-items: center;
 
     z-index: $z-overmap;
-    margin-left: 5em;
+    margin-left: calc($sidebar-width + 4em); // this should move back by 1 * $sidebar-width when sidebar collapses
     margin-top: 1em;
     height: $button-large;
 }
@@ -153,7 +167,7 @@ svg {
 @media (min-width: $mobile-maxwidth) {
     // overrides starter style to accomodate desktop sidebar overflow
     .leaflet-left {
-        left: 2em;
+        left: calc($sidebar-width + 1em); // this should move back by 1 * $sidebar-width when sidebar collapses
     }
 }
 
