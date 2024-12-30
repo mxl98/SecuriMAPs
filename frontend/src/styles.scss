@@ -58,6 +58,10 @@ svg {
     stroke-width: 3px;
 }
 
+.hide {
+    display: none;
+}
+
 /*
 =============================
 2.2 MAP STYLES
@@ -106,12 +110,21 @@ svg {
     color: light-dark(#222, #eee);
     background: light-dark(#fff, #232323);
     box-shadow: 0px 2px 5px #aaa;
+
+    // the state of the drawer button can be controlled only by modifying the aria-expanded state
+    &[aria-expanded="true"] + .sidebar-drawer {
+        left: $sidebar-width;
+    }
+
+    &[aria-expanded="false"] {
+        left: -$sidebar-width;
+    }
 }
 
 .sidebar-drawer {
     position: absolute;
     top: calc($map-height / 2 - $button-large * 0.75);
-    z-index: $z-overmap;
+    z-index: $z-overmap - 1; // this needs to be just below the sidebar, otherwise the shadow overlaps on it
 
     height: calc($button-large * 1.5);
     width: calc($button-large / 2);
