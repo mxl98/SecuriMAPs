@@ -10,23 +10,21 @@ export class SidebarService {
   /**
    * Changes the state of the sidebar based on its current state.
    */
-  toggleSidebar(): void {
-
+  toggleSidebar(isExpanded: boolean): void {
+    isExpanded ? this.animateRetract() : this.animateExpand();
   }
 
   /**
-   * Expands the sidebar by applying an animation to its container and the drawer button and arrow.
-   * Changes the aria-expanded state to true.
+   * Applies an expanding animation to its container and the drawer button and arrow.
+   * Also moves buttons to the right.
    */
-  expandSidebar(): void {
-
+  animateExpand(): void {
   }
 
   /**
-   * Retracts the sidebar by applying an animation to its container and the drawer button and arrow.
-   * Changes the aria-expanded state to false.
+   * Applies a retracting animation to its container and the drawer button and arrow.
+   * Also moves buttons to the left.
    */
-  retractSidebar(): void {
-
+  animateRetract(): void {
   }
 }
