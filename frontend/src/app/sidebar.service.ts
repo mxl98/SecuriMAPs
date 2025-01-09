@@ -59,7 +59,7 @@ export class SidebarService {
    * ]
    * @param isExpanded Tells if the sidebar is currently expanded, then the arrow is pointing left.
    */
-  flipArrow(isExpanded: boolean): number[][] {
+  flipArrow(): number[][] {
     this.arrowMatrix = this.arrowMatrix.map(([x1, y1, x2, y2]) => {
       return [
         x2,

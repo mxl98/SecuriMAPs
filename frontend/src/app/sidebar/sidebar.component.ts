@@ -26,6 +26,6 @@ export class SidebarComponent {
     this.isExpanded = sidebar?.getAttribute('aria-expanded') === 'true';
     sidebar?.setAttribute('aria-expanded', !this.isExpanded + "");
 
-    this.arrowMatrix = this._sidebarService.flipArrow(this.isExpanded);
+    this.arrowMatrix = this._sidebarService.flipArrow();
   }
 }
