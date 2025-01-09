@@ -30,7 +30,7 @@ export class SidebarService {
     sidebar?.classList.remove('sidebar-expand_animation');
     sidebar?.classList.add('sidebar-retract_animation');
 
-    drawer?.classList.remove('drawer-expand_animation')
+    drawer?.classList.remove('drawer-expand_animation');
     drawer?.classList.add('drawer-retract_animation');
   }
 
@@ -46,7 +46,7 @@ export class SidebarService {
     sidebar?.classList.add('sidebar-expand_animation');
 
     drawer?.classList.remove('drawer-retract_animation');
-    drawer?.classList.add('drawer-expand_animation')
+    drawer?.classList.add('drawer-expand_animation');
   }
 
   /**

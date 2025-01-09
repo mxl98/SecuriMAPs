@@ -124,6 +124,7 @@ svg {
 
 .sidebar-drawer {
     position: absolute;
+    cursor: pointer;
     top: calc($map-height / 2 - $button-large * 0.75);
     z-index: $z-overmap - 1; // this needs to be just below the sidebar, otherwise the shadow overlaps on it
 
@@ -134,6 +135,16 @@ svg {
 
     background: light-dark(#ffffff86, #23232386);
     box-shadow: 0px 2px 5px #aaa;
+
+    &:hover {
+        background: light-dark(#dadada86, #20202086);
+        box-shadow: 0px 2px 5px #999;
+    }
+
+    &:active {
+        background: light-dark(#cacaca86, #1b1b1b86);
+        box-shadow: 0px 2px 5px #888;
+    }
 }
 
 .sidebar-retract_animation {
