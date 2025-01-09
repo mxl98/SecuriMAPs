@@ -36,8 +36,11 @@ export class MapService {
     this.map = L.map('map', {
       center: this.centerPoint,
       maxBounds: bounds,
+      zoomControl: false,
       zoom: 12
     });
+
+    new L.Control.Zoom({ position: 'topright' }).addTo(this.map);
 
     // For OpenStreetMap-sourced tiles, comment if using another source
     // const osmTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

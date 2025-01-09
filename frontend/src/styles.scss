@@ -125,6 +125,7 @@ svg {
 .sidebar-drawer {
     position: absolute;
     cursor: pointer;
+    overflow: hidden;
     top: calc($map-height / 2 - $button-large * 0.75);
     z-index: $z-overmap - 1; // this needs to be just below the sidebar, otherwise the shadow overlaps on it
 
@@ -143,7 +144,7 @@ svg {
 
     &:active {
         background: light-dark(#cacaca86, #1b1b1b86);
-        box-shadow: 0px 2px 5px #888;
+        box-shadow: 0px 2px 3px #888;
     }
 }
 
@@ -220,14 +221,14 @@ svg {
 
 .button-navbar {
     position: absolute;
+    right: 70px; // this offsets the navbar just past the zoom controls
 
     display: flex;
     column-gap: 10px;
     align-items: center;
 
     z-index: $z-overmap;
-    margin-left: calc($sidebar-width + 4em); // this should move back by 1 * $sidebar-width when sidebar collapses
-    margin-top: 1em;
+    margin-top: 12px; // this aligns with the top of the zoom control buttons
     height: $button-large;
 }
 
@@ -251,8 +252,8 @@ svg {
 
 @media (min-width: $mobile-maxwidth) {
     // overrides starter style to accomodate desktop sidebar overflow
-    .leaflet-left {
-        left: calc($sidebar-width + 1em); // this should move back by 1 * $sidebar-width when sidebar collapses
+    .leaflet-right {
+        right: 1em; // this should move back by 1 * $sidebar-width when sidebar collapses
     }
 }
 
@@ -300,6 +301,7 @@ svg {
 
     & button {
         cursor: pointer;
+        overflow: hidden;
 
         height: $button-large;
         width: $button-large;
