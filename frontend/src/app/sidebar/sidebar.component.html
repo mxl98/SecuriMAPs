@@ -1,8 +1,13 @@
 <div id="sidebar" class="sidebar-container" aria-expanded="true">Sidebar</div>
-<div class="sidebar-drawer" (click)="toggleSidebar()">
+<div id="sidebar-drawer" class="sidebar-drawer" (click)="toggleSidebar()">
     <svg id="sidebar-arrow">
         <!-- starts expanded, animates depending on aria-expanded state of the sidebar container -->
-        <line x1="17" y1="25" x2="7" y2="37" />
-        <line x1="17" y1="47" x2="7" y2="35" />
+        <line
+            *ngFor="let line of arrowMatrix"
+            [attr.x1]="line[0]"
+            [attr.y1]="line[1]"
+            [attr.x2]="line[2]"
+            [attr.y2]="line[3]"
+        ></line>
     </svg>
 </div>

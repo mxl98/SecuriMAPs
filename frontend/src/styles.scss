@@ -97,6 +97,7 @@ svg {
 .sidebar-container {
     position: absolute;
     top: 0;
+    left: 0;
     flex-direction: column;
     align-items: center;
     min-width: calc($sidebar-width - 2em); // makes the map flow under the sidebar corners
@@ -111,7 +112,7 @@ svg {
     background: light-dark(#fff, #232323);
     box-shadow: 0px 2px 5px #aaa;
 
-    // the state of the drawer button can be controlled only by modifying the aria-expanded state
+    // adjusts the position of the button based on the sidebar state
     &[aria-expanded="true"] + .sidebar-drawer {
         left: $sidebar-width;
     }
@@ -135,9 +136,69 @@ svg {
     box-shadow: 0px 2px 5px #aaa;
 }
 
+.sidebar-retract_animation {
+    animation-name: sidebar-retract;
+    animation-duration: 150ms;
+    animation-timing-function: ease;
+}
+
+.sidebar-expand_animation {
+    animation-name: sidebar-expand;
+    animation-duration: 150ms;
+    animation-timing-function: ease;
+}
+
+.drawer-retract_animation {
+    animation-name: drawer-retract;
+    animation-duration: 150ms;
+    animation-timing-function: ease;
+}
+
+.drawer-expand_animation {
+    animation-name: drawer-expand;
+    animation-duration: 150ms;
+    animation-timing-function: ease;
+}
+
 @media (max-width: $mobile-maxwidth) {
     #sidebar, .sidebar-drawer {
         display: none;
+    }
+}
+
+@keyframes sidebar-retract {
+    from {
+        left: 0;
+    }
+    to {
+        left: -$sidebar-width;
+    }
+}
+
+@keyframes sidebar-expand {
+    from {
+        left: -$sidebar-width;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes drawer-retract {
+    from {
+        left: $sidebar-width;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes drawer-expand {
+    from {
+        left: 0;
+    }
+    to {
+        left: $sidebar-width;
     }
 }
 
