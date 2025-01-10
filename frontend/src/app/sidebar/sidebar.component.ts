@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { SidebarService } from '../sidebar.service';
 import { NgFor } from '@angular/common';
+import { TooltipComponent } from '../tooltip/tooltip.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [NgFor],
+  imports: [
+    NgFor,
+    TooltipComponent
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
@@ -13,6 +17,9 @@ export class SidebarComponent {
   private _sidebarService: SidebarService;
   private isExpanded: boolean = false;
   arrowMatrix: number[][];
+  tooltipMsgs = {
+    drawer: 'Toggle the sidebar'
+  };
 
   constructor(sidebarService: SidebarService) {
     this._sidebarService = sidebarService;
