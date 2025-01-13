@@ -221,7 +221,8 @@ svg {
 
 .button-navbar {
     position: absolute;
-    right: 70px; // this offsets the navbar just past the zoom controls
+    top: 0px;
+    left: 1em;
 
     display: flex;
     column-gap: 10px;
