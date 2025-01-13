@@ -4,9 +4,10 @@
 2. GLOBAL STYLES
     2.1 GENERAL
     2.2 MAP
-    2.3 SIDEBAR
-    2.4 NAVBAR
-    2.5 BUTTONS
+    2.3 MENU
+    2.4 SIDEBAR
+    2.5 NAVBAR
+    2.6 BUTTONS
 =============================
 */
 
@@ -87,7 +88,62 @@ svg {
 
 /*
 =============================
-2.3 SIDEBAR STYLES
+2.3 MENU STYLES
+*/
+
+.menu-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    &[aria-expanded="true"] .button-navbar {
+        left: calc($sidebar-width + 20px);
+    }
+
+    &[aria-expanded="false"] .button-navbar {
+        left: 20px;
+    }
+}
+
+@media (max-width: $mobile-maxwidth) {
+    .menu-container {
+        position: static;
+    }
+}
+
+.menu-retract {
+    animation-name: menu-retract;
+    animation-duration: 200ms;
+    animation-timing-function: ease;
+}
+
+.menu-expand {
+    animation-name: menu-expand;
+    animation-duration: 200ms;
+    animation-timing-function: ease;
+}
+
+@keyframes menu-retract {
+    from {
+        left: $sidebar-width;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes menu-expand {
+    from {
+        left: -$sidebar-width;
+    }
+    to {
+        left: 0;
+    }
+}
+
+/*
+=============================
+2.4 SIDEBAR STYLES
 */
 
 #sidebar {
@@ -216,13 +272,13 @@ svg {
 
 /*
 =============================
-2.4 NAVBAR STYLES
+2.5 NAVBAR STYLES
 */
 
 .button-navbar {
     position: absolute;
     top: 0px;
-    left: 1em;
+    left: calc($sidebar-width + 20px);
 
     display: flex;
     column-gap: 10px;
@@ -235,6 +291,8 @@ svg {
 
 @media (max-width: $mobile-maxwidth) {
     .button-navbar {
+        left: auto;
+        top: auto;
         bottom: 0px;
         right: 0px;
 
@@ -248,7 +306,7 @@ svg {
 
 /*
 =============================
-2.5 BUTTONS STYLES
+2.6 BUTTONS STYLES
 */
 
 @media (min-width: $mobile-maxwidth) {

@@ -20,33 +20,25 @@ export class SidebarService {
   }
 
   /**
-   * Applies an expanding animation to its container and the drawer button.
+   * Applies an expanding animation to the menu.
    * Also moves buttons to the right.
    */
   animateExpand(): void {
-    let sidebar = document.getElementById('sidebar');
-    let drawer = document.getElementById('sidebar-drawer');
-    
-    sidebar?.classList.remove('sidebar-expand_animation');
-    sidebar?.classList.add('sidebar-retract_animation');
+    let menu = document.getElementById('menu');
 
-    drawer?.classList.remove('drawer-expand_animation');
-    drawer?.classList.add('drawer-retract_animation');
+    menu?.classList.remove('menu-expand');
+    menu?.classList.add('menu-retract');
   }
 
   /**
-   * Applies a retracting animation to its container and the drawer button.
+   * Applies a retracting animation to the menu.
    * Also moves buttons to the left.
    */
   animateRetract(): void {
-    let sidebar = document.getElementById('sidebar');
-    let drawer = document.getElementById('sidebar-drawer');
+    let menu = document.getElementById('menu');
 
-    sidebar?.classList.remove('sidebar-retract_animation');
-    sidebar?.classList.add('sidebar-expand_animation');
-
-    drawer?.classList.remove('drawer-retract_animation');
-    drawer?.classList.add('drawer-expand_animation');
+    menu?.classList.remove('menu-retract');
+    menu?.classList.add('menu-expand');
   }
 
   /**

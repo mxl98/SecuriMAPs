@@ -30,8 +30,10 @@ export class SidebarComponent {
     this._sidebarService.toggleSidebar(this.isExpanded);
 
     let sidebar = document.getElementById('sidebar');
+    let menu = document.getElementById('menu');
     this.isExpanded = sidebar?.getAttribute('aria-expanded') === 'true';
     sidebar?.setAttribute('aria-expanded', !this.isExpanded + "");
+    menu?.setAttribute('aria-expanded', !this.isExpanded + "");
 
     this.arrowMatrix = this._sidebarService.flipArrow();
   }
