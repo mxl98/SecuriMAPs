@@ -1,5 +1,8 @@
-<div class="tooltip-container">
-    <p>
-        {{msg}}TESTTHIS IS LONG TEST
-    </p>
+<div class="tooltip tooltip-right" [ngClass]="{ 'visible': visibility }">
+    <div class="tooltip-container">
+        <p class="tooltip-text">
+            {{msg}}
+        </p>
+    </div>
+    <div class="tooltip-arrow"></div>
 </div>

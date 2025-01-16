@@ -179,13 +179,16 @@ svg {
     }
 }
 
+// this will be inherited by both the drawer tooltip and button
 .sidebar-drawer {
+    display: flex;
     position: absolute;
-    cursor: pointer;
-    overflow: hidden;
     top: calc($map-height / 2 - $button-large * 0.75);
     z-index: $z-overmap - 1; // this needs to be just below the sidebar, otherwise the shadow overlaps on it
-    
+}
+
+.sidebar-drawer-button {
+    cursor: pointer;
     height: calc($button-large * 1.5);
     width: calc($button-large / 2);
     border-top-right-radius: 10px;
@@ -193,9 +196,7 @@ svg {
 
     background: light-dark(#ffffff86, #23232386);
     box-shadow: 0px 2px 5px #aaa;
-}
-
-.sidebar-drawer-button {
+    
     &:hover {
         background: light-dark(#dadada86, #20202086);
         box-shadow: 0px 2px 5px #999;
@@ -393,11 +394,50 @@ svg {
 2.7 TOOLTIPS STYLES
 */
 
-.tooltip-container {
-    position: relative;
-    width: fit-content;
-    max-width: 10em;
-    z-index: $z-overmap;
+.tooltip {
+    filter: drop-shadow(0px 3px 5px #aaa);
+    opacity: 0;
+    transition: opacity 250ms ease;
+}
 
-    background-color: gray;
+.tooltip.visible {
+    opacity: 1;
+}
+
+.tooltip-container {
+    width: max-content;
+    max-width: 9em;
+    z-index: $z-overmap;
+    padding: 0.5em;
+
+    border-radius: 10px;
+
+    background: light-dark(#ffffff, #23232386);
+}
+
+.tooltip-right {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    position: relative;
+
+    & > .tooltip-arrow {
+        position: relative;
+        z-index: $z-overmap;
+        left: 5px;
+
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+
+        background: light-dark(#ffffff, #23232386);
+        overflow: hidden;
+    }
+}
+
+.tooltip-text {
+    margin: 0 0.5em 0 0.5em;
+
+    text-align: center;
+    font-size: 12px;
 }

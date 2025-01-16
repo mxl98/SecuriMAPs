@@ -1,7 +1,7 @@
 <div id="sidebar" class="sidebar-container" aria-expanded="true">Sidebar</div>
 <div id="sidebar-drawer" class="sidebar-drawer" (click)="toggleSidebar()">
     <!-- wrapped in another class to make tooltip relative to wrapping class, not to the button class -->
-    <div class="sidebar-drawer-button">
+    <div id="sidebar-drawer-button" class="sidebar-drawer-button">
         <svg id="sidebar-arrow" width="24" height="72">
         <!-- starts expanded, animates depending on aria-expanded state of the sidebar container -->
         <line
@@ -12,4 +12,5 @@
             [attr.y2]="line[3]"
         ></line>
     </svg></div>
+    <app-tooltip [msg]="tooltipMsgs.drawer" [targetId]="'sidebar-drawer-button'" id="sidebar-drawer-tooltip" class="tooltip-right"></app-tooltip>
 </div>
