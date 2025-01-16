@@ -332,12 +332,12 @@ svg {
     border-top-right-radius: 16px;
     box-shadow: 0px 3px 5px #888;
 
-    &:hover {
+    &:hover[aria-disabled="false"] {
         background: #f4f4f4;
         box-shadow: 0px 2px 6px #666;
     }
     
-    &:active {
+    &:active[aria-disabled="false"] {
         background: #eaeaea;
         box-shadow: 0px 2px 3px #444;
     }
@@ -348,12 +348,12 @@ svg {
     border-bottom-right-radius: 16px;
     box-shadow: 0px 3px 5px #888;
 
-    &:hover {
+    &:hover[aria-disabled="false"] {
         background: #f4f4f4;
         box-shadow: 0px 2px 6px #666;
     }
     
-    &:active {
+    &:active[aria-disabled="false"] {
         background: #eaeaea;
         box-shadow: 0px 2px 3px #444;
     }
