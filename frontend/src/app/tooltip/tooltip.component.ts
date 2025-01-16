@@ -35,7 +35,7 @@ export class TooltipComponent{
       });
 
       const mouseLeaveListener = this.renderer.listen(this.targetElement, 'mouseleave', () => {
-        this.timeoutId = this._tooltipService.cancelDisplay(this.timeoutId);
+        this.cancelTimeout();
         this.visibility = false;
       });
 
@@ -47,6 +47,10 @@ export class TooltipComponent{
 
   ngOnDestroy(): void {
     this.listeners.forEach((removeListener) => removeListener());
+    this.cancelTimeout();
+  }
+
+  cancelTimeout(): void {
     this.timeoutId = this._tooltipService.cancelDisplay(this.timeoutId);
   }
 }

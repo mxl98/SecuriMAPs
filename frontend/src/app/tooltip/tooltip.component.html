@@ -1,4 +1,4 @@
-<div class="tooltip tooltip-right" [ngClass]="{ 'visible': visibility }">
+<div class="tooltip tooltip-right" [ngClass]="{ 'visible': visibility }" role="tooltip" [attr.aria-hidden]="!visibility">
     <div class="tooltip-container">
         <p class="tooltip-text">
             {{msg}}
