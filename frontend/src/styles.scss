@@ -208,6 +208,32 @@ svg {
     }
 }
 
+.sidebar-header {
+    border-bottom: solid 1px #eee;
+}
+
+.sidebar-middle {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-element {
+    margin: 5px 0 5px 0;
+
+    &:first-of-type {
+        margin-top: 10px;
+    }
+
+    &:last-of-type {
+        margin-bottom: 10px;
+    }
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    border-top: solid 1px #eee;
+}
+
 .sidebar-retract_animation {
     animation-name: sidebar-retract;
     animation-duration: 150ms;

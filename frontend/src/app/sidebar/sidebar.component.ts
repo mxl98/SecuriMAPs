@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { SidebarService } from '../sidebar.service';
 import { NgFor } from '@angular/common';
 import { TooltipComponent } from '../tooltip/tooltip.component';
+import { ThemeButtonComponent } from '../theme-button/theme-button.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [
     NgFor,
-    TooltipComponent
+    TooltipComponent,
+    ThemeButtonComponent
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'

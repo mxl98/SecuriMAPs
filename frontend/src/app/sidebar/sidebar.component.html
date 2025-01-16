@@ -1,4 +1,24 @@
-<div id="sidebar" class="sidebar-container" aria-expanded="true">Sidebar</div>
+<div id="sidebar" class="sidebar-container" aria-expanded="true">
+    <div class="sidebar-header">
+        <p>
+            Sidebar
+        </p>
+    </div>
+    <div class="sidebar-middle">
+        <div class="sidebar-element">
+            Element 1
+        </div>
+        <div class="sidebar-element">
+            Element 2
+        </div>
+        <div class="sidebar-element">
+            Element 3
+        </div>
+    </div>
+    <div id="sidebar-footer" class="sidebar-footer">
+        <app-theme-button></app-theme-button>
+    </div>
+</div>
 <div id="sidebar-drawer" class="sidebar-drawer" (click)="toggleSidebar()">
     <!-- wrapped in another class to make tooltip relative to wrapping class, not to the button class -->
     <div id="sidebar-drawer-button" class="sidebar-drawer-button" aria-describedby="sidebar-drawer-tooltip">
