@@ -1,6 +1,8 @@
 <div id="sidebar" class="sidebar-container" aria-expanded="true">Sidebar</div>
 <div id="sidebar-drawer" class="sidebar-drawer" (click)="toggleSidebar()">
-    <svg id="sidebar-arrow" width="24" height="72">
+    <!-- wrapped in another class to make tooltip relative to wrapping class, not to the button class -->
+    <div class="sidebar-drawer-button">
+        <svg id="sidebar-arrow" width="24" height="72">
         <!-- starts expanded, animates depending on aria-expanded state of the sidebar container -->
         <line
             *ngFor="let line of arrowMatrix"
@@ -9,6 +11,5 @@
             [attr.x2]="line[2]"
             [attr.y2]="line[3]"
         ></line>
-    </svg>
-    <app-tooltip [msg]="tooltipMsgs.drawer" id="sidebar-drawer-tooltip"></app-tooltip>
+    </svg></div>
 </div>
