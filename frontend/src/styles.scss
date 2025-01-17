@@ -414,20 +414,14 @@ svg {
     }
 }
 
+.button-frame {
+    max-width: $button-large;
+}
+
 /*
 =============================
 2.7 TOOLTIPS STYLES
 */
-
-.tooltip {
-    filter: drop-shadow(0px 3px 5px #aaa);
-    opacity: 0;
-    transition: opacity 250ms ease;
-}
-
-.tooltip.visible {
-    opacity: 1;
-}
 
 .tooltip-container {
     width: max-content;
@@ -446,7 +440,20 @@ svg {
     flex-direction: row-reverse;
     position: relative;
 
-    & > .tooltip-arrow {
+    & > .tooltip {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        filter: drop-shadow(0px 3px 5px #aaa);
+        opacity: 0;
+        transition: opacity 250ms ease;
+
+        &.visible {
+            opacity: 1;
+        }
+    }
+
+    & .tooltip-arrow {
         position: relative;
         z-index: $z-overmap;
         left: 5px;
@@ -460,13 +467,27 @@ svg {
     }
 }
 
-.tooltip-bottom-right {
-    display: flex;
-    position: relative;
+.tooltip-bottom {
 
-    & > .tooltip-arrow {
+    & > .tooltip {
+        position: relative;
+        top: -3px;
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+        filter: drop-shadow(0px 3px 5px #aaa);
+        opacity: 0;
+        transition: opacity 250ms ease;
+
+        &.visible {
+            opacity: 1;
+        }
+    }
+
+    & .tooltip-arrow {
         position: relative;
         z-index: $z-overmap;
+        top: 5px;
 
         width: 10px;
         height: 10px;
