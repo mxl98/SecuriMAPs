@@ -312,7 +312,6 @@ svg {
 
     display: flex;
     column-gap: 10px;
-    align-items: center;
 
     z-index: $z-overmap;
     margin-top: 12px; // this aligns with the top of the zoom control buttons
@@ -451,6 +450,23 @@ svg {
         position: relative;
         z-index: $z-overmap;
         left: 5px;
+
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+
+        background: light-dark(#ffffff, #23232386);
+        overflow: hidden;
+    }
+}
+
+.tooltip-bottom-right {
+    display: flex;
+    position: relative;
+
+    & > .tooltip-arrow {
+        position: relative;
+        z-index: $z-overmap;
 
         width: 10px;
         height: 10px;

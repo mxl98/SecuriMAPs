@@ -1,6 +1,6 @@
 <div class="sq-button-container">
     <div class="button-frame">
-        <button type="submit" (click)="resetMap()">
+        <button type="submit" id="reset-button" (click)="resetMap()">
             <svg width="48" height="48">
                 <circle cx="24" cy="24" r="9" fill="none" />
                 <line x1="24" y1="11" x2="24" y2="20" />
@@ -11,3 +11,4 @@
         </button>
     </div>
 </div>
+<app-tooltip [msg]="tooltipMsg" [targetId]="'reset-button'" id="reset-button-tooltip" class="tooltip-bottom-right"></app-tooltip>
