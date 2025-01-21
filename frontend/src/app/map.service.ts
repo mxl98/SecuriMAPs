@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import L from 'leaflet';
+import { MapThemeService } from './map-theme.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import L from 'leaflet';
  * Represents the service class for the interactible map initialization, configuration and controls.
  */
 export class MapService {
+  private _mapThemeService: MapThemeService;
   private mapboxUrls = {
       'light': `https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`,
       'dark':  `https://api.mapbox.com/styles/v1/${ environment.mapboxUsername }/cm4ubpdkk00aa01qpgd9ahtfi/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`
@@ -18,7 +20,8 @@ export class MapService {
     private map: L.Map | null = null;
     private isDarkMode: boolean = false;
 
-  constructor() {
+  constructor(mapThemeService: MapThemeService) {
+    this._mapThemeService = mapThemeService;
     // i'd rather work using light mode, will uncomment when finished
     //this.isDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
@@ -52,13 +55,7 @@ export class MapService {
     // osmTiles.addTo(this.map);
     
     // For MapBox-sourced tiles, comment if using another source because of pricing
-    const mapboxTiles = L.tileLayer(this.isDarkMode? this.mapboxUrls.dark : this.mapboxUrls.light, {
-      maxZoom: 19,
-      minZoom: 12,
-      attribution: '&copy; <a href="https://www.mapbox.com/">MapBox</a>',
-      tileSize: 512,
-      zoomOffset: -1
-    });
+    const mapboxTiles = this._mapThemeService.setTilesTheme();
     
     mapboxTiles.addTo(this.map);
   }

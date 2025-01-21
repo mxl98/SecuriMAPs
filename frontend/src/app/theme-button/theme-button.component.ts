@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './theme-button.component.scss'
 })
 export class ThemeButtonComponent {
+  private darkMode = false;
 
+  constructor() {
+  }
 }
