@@ -55,7 +55,7 @@ export class MapService {
     // osmTiles.addTo(this.map);
     
     // For MapBox-sourced tiles, comment if using another source because of pricing
-    const mapboxTiles = this._mapThemeService.setTilesTheme();
+    const mapboxTiles = this._mapThemeService.setTilesTheme(this.isDarkMode);
     
     mapboxTiles.addTo(this.map);
   }

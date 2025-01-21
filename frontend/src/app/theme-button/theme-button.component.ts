@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MapThemeService } from '../map-theme.service';
 
 @Component({
   selector: 'app-theme-button',
@@ -8,8 +9,18 @@ import { Component } from '@angular/core';
   styleUrl: './theme-button.component.scss'
 })
 export class ThemeButtonComponent {
-  private darkMode = false;
+  private isDarkMode = false;
+  private _mapThemeService: MapThemeService;
 
-  constructor() {
+  constructor(mapThemeService: MapThemeService) {
+    this._mapThemeService = mapThemeService;
+  }
+
+  /**
+   * When it is called by the toggle event,
+   * updates the map theme based on the button value.
+   */
+  updateMapTheme(): void {
+    this._mapThemeService.setTilesTheme(this.isDarkMode);
   }
 }
