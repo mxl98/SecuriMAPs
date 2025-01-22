@@ -9,7 +9,6 @@ import { MapThemeService } from '../map-theme.service';
   styleUrl: './theme-button.component.scss'
 })
 export class ThemeButtonComponent {
-  private isDarkMode = false;
   private _mapThemeService: MapThemeService;
 
   constructor(mapThemeService: MapThemeService) {
@@ -21,6 +20,6 @@ export class ThemeButtonComponent {
    * updates the map theme based on the button value.
    */
   updateMapTheme(): void {
-    this._mapThemeService.setTilesTheme(this.isDarkMode);
+    this._mapThemeService.setIsDarkMode(!this._mapThemeService.getIsDarkMode());
   }
 }

@@ -32,6 +32,8 @@ export class MapService {
    * and uses the correct style based on the browser theme.
    */
   initMap(): void {
+    this.isDarkMode = this._mapThemeService.getIsDarkMode();
+
     const swPoint = new L.LatLng(45.3, -73.17),
           nePoint = new L.LatLng(45.8, -74.27),
           bounds = new L.LatLngBounds(swPoint, nePoint);
@@ -55,7 +57,13 @@ export class MapService {
     // osmTiles.addTo(this.map);
     
     // For MapBox-sourced tiles, comment if using another source because of pricing
-    const mapboxTiles = this._mapThemeService.setTilesTheme(this.isDarkMode);
+    const mapboxTiles = L.tileLayer(this.isDarkMode? this.mapboxUrls.dark : this.mapboxUrls.light, {
+      maxZoom: 19,
+      minZoom: 12,
+      attribution: '&copy; <a href="https://www.mapbox.com/">MapBox</a>',
+      tileSize: 512,
+      zoomOffset: -1
+    });
     
     mapboxTiles.addTo(this.map);
   }
