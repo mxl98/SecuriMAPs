@@ -26,14 +26,20 @@ export class MapService {
     //this.isDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
 
+  getMap(): L.Map | null {
+    return this.map;
+  }
+
+  setMap(map: L.Map): void {
+    this.map = map;
+  }
+
   /**
    * Initializes the map centered on Montreal, Canada.
    * The map is bounded to include Montreal and its direct surroundings,
    * and uses the correct style based on the browser theme.
    */
   initMap(): void {
-    this.isDarkMode = this._mapThemeService.getIsDarkMode();
-
     const swPoint = new L.LatLng(45.3, -73.17),
           nePoint = new L.LatLng(45.8, -74.27),
           bounds = new L.LatLngBounds(swPoint, nePoint);
@@ -57,6 +63,17 @@ export class MapService {
     // osmTiles.addTo(this.map);
     
     // For MapBox-sourced tiles, comment if using another source because of pricing
+    this.updateMapTiles(this.map);
+  }
+
+  /**
+   * Updates the map TileLayer according to the active theme.
+   * @param map the map to update
+   * @returns the updated map
+   */
+  updateMapTiles(map: L.Map): L.Map {
+    this.isDarkMode = this._mapThemeService.getIsDarkMode();
+
     const mapboxTiles = L.tileLayer(this.isDarkMode? this.mapboxUrls.dark : this.mapboxUrls.light, {
       maxZoom: 19,
       minZoom: 12,
@@ -65,7 +82,9 @@ export class MapService {
       zoomOffset: -1
     });
     
-    mapboxTiles.addTo(this.map);
+    mapboxTiles.addTo(map);
+
+    return map;
   }
 
   /**
