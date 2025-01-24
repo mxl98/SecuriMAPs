@@ -9,17 +9,14 @@ import { MapThemeService } from '../map-theme.service';
   styleUrl: './theme-button.component.scss'
 })
 export class ThemeButtonComponent {
-  private _mapThemeService: MapThemeService;
 
-  constructor(mapThemeService: MapThemeService) {
-    this._mapThemeService = mapThemeService;
-  }
+  constructor() {  }
 
   /**
    * When it is called by the toggle event,
    * updates the map theme based on the button value.
    */
   updateMapTheme(): void {
-    this._mapThemeService.setIsDarkMode(!this._mapThemeService.getIsDarkMode());
+    console.log("theme switch");
   }
 }
