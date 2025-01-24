@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import L from 'leaflet';
-import { environment } from '../../environments/environment';
 import { MapService } from '../map.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 

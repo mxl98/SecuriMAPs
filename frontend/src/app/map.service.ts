@@ -17,7 +17,7 @@ export class MapService {
       'dark':  `https://api.mapbox.com/styles/v1/${ environment.mapboxUsername }/cm4ubpdkk00aa01qpgd9ahtfi/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`
     };
     private centerPoint = new L.LatLng(45.5, -73.57);
-    private map: L.Map | null = null;
+    private map: L.Map | undefined;
     private isDarkMode: boolean = false;
 
   constructor(mapThemeService: MapThemeService) {
@@ -26,7 +26,7 @@ export class MapService {
     //this.isDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
 
-  getMap(): L.Map | null {
+  getMap(): L.Map | undefined {
     return this.map;
   }
 
@@ -63,7 +63,17 @@ export class MapService {
     // osmTiles.addTo(this.map);
     
     // For MapBox-sourced tiles, comment if using another source because of pricing
-    this.updateMapTiles(this.map);
+    const mapboxTiles = this.generateMapTiles();
+
+    mapboxTiles.addTo(this.map);
+    
+    this._mapThemeService.isDarkMode$.subscribe((isDarkMode) => {
+      if (!this.map) return;
+
+      this.isDarkMode = isDarkMode;
+      const newtiles = this.generateMapTiles();
+      newtiles.addTo(this.map);
+    });
   }
 
   /**
@@ -71,9 +81,7 @@ export class MapService {
    * @param map the map to update
    * @returns the updated map
    */
-  updateMapTiles(map: L.Map): L.Map {
-    this.isDarkMode = this._mapThemeService.getIsDarkMode();
-
+  generateMapTiles(): L.TileLayer {
     const mapboxTiles = L.tileLayer(this.isDarkMode? this.mapboxUrls.dark : this.mapboxUrls.light, {
       maxZoom: 19,
       minZoom: 12,
@@ -82,9 +90,7 @@ export class MapService {
       zoomOffset: -1
     });
     
-    mapboxTiles.addTo(map);
-
-    return map;
+    return mapboxTiles;
   }
 
   /**

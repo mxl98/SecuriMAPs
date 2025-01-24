@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import L, { map } from 'leaflet';
-import { environment } from '../environments/environment';
-import { MapService } from './map.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapThemeService {
   private isDarkMode = false;
+  private isDarkModeSubject = new BehaviorSubject<boolean>(false);
+  isDarkMode$ = this.isDarkModeSubject.asObservable();
 
   constructor() {}
 
@@ -17,6 +17,14 @@ export class MapThemeService {
 
   setIsDarkMode(isDarkMode: boolean): void {
     this.isDarkMode = isDarkMode;
+  }
+
+  /**
+   * Emits the updated value to its listeners.
+   */
+  switchTheme(): void {
+    const currentMode = this.isDarkModeSubject.getValue();
+    this.isDarkModeSubject.next(!currentMode);
   }
 
   /**
