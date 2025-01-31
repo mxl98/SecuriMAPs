@@ -9,8 +9,11 @@ import { MapThemeService } from '../map-theme.service';
   styleUrl: './theme-button.component.scss'
 })
 export class ThemeButtonComponent {
+  private _mapThemeService : MapThemeService;
 
-  constructor() {  }
+  constructor(mapThemeService : MapThemeService) {
+    this._mapThemeService = mapThemeService;
+  }
 
   /**
    * When it is called by the toggle event,
@@ -18,5 +21,6 @@ export class ThemeButtonComponent {
    */
   updateMapTheme(): void {
     console.log("theme switch");
+    this._mapThemeService.switchTheme();
   }
 }
