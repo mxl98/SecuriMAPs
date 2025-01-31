@@ -14,6 +14,7 @@ export class TooltipComponent{
   @Input() msg = '';
   @Input() targetId = '';
   visibility = false;
+  hidden = true;
   timeoutDelay = 500;
 
   private targetElement: HTMLElement | null = null;
@@ -29,12 +30,14 @@ export class TooltipComponent{
 
     if (this.targetElement) {
       const mouseEnterListener = this.renderer.listen(this.targetElement, 'mouseenter', () => {
+        this.hidden = false;
         this.timeoutId = setTimeout(() => {
           this.visibility = true;
         }, this.timeoutDelay);
       });
 
       const mouseLeaveListener = this.renderer.listen(this.targetElement, 'mouseleave', () => {
+        this.hidden = true;
         this.cancelTimeout();
         this.visibility = false;
       });

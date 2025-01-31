@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { MapThemeService } from '../map-theme.service';
+import { TooltipComponent } from '../tooltip/tooltip.component';
 
 @Component({
   selector: 'app-theme-button',
   standalone: true,
-  imports: [],
+  imports: [
+    TooltipComponent
+  ],
   templateUrl: './theme-button.component.html',
   styleUrl: './theme-button.component.scss'
 })
@@ -20,7 +23,6 @@ export class ThemeButtonComponent {
    * updates the map theme based on the button value.
    */
   updateMapTheme(): void {
-    console.log("theme switch");
     this._mapThemeService.switchTheme();
   }
 }

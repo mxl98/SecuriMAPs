@@ -19,7 +19,7 @@
         <app-theme-button></app-theme-button>
     </div>
 </div>
-<div id="sidebar-drawer" class="sidebar-drawer" (click)="toggleSidebar()">
+<div id="sidebar-drawer" class="sidebar-drawer tooltip-button" (click)="toggleSidebar()">
     <!-- wrapped in another class to make tooltip relative to wrapping class, not to the button class -->
     <div id="sidebar-drawer-button" class="sidebar-drawer-button" aria-describedby="sidebar-drawer-tooltip">
         <svg id="sidebar-arrow" width="24" height="72">
@@ -30,7 +30,8 @@
             [attr.y1]="line[1]"
             [attr.x2]="line[2]"
             [attr.y2]="line[3]"
-        ></line>
-    </svg></div>
+            ></line>
+        </svg>
+    </div>
     <app-tooltip [msg]="tooltipMsgs.drawer" [targetId]="'sidebar-drawer-button'" id="sidebar-drawer-tooltip" class="tooltip-right"></app-tooltip>
 </div>
