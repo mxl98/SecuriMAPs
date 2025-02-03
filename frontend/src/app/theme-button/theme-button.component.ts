@@ -13,6 +13,7 @@ import { TooltipComponent } from '../tooltip/tooltip.component';
 })
 export class ThemeButtonComponent {
   private _mapThemeService : MapThemeService;
+  tooltipMsg = 'Switch theme';
 
   constructor(mapThemeService : MapThemeService) {
     this._mapThemeService = mapThemeService;
