@@ -3,6 +3,7 @@ import { SidebarService } from '../sidebar.service';
 import { NgFor } from '@angular/common';
 import { TooltipComponent } from '../tooltip/tooltip.component';
 import { ThemeButtonComponent } from '../theme-button/theme-button.component';
+import { ModeComponent } from '../mode/mode.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,7 +11,8 @@ import { ThemeButtonComponent } from '../theme-button/theme-button.component';
   imports: [
     NgFor,
     TooltipComponent,
-    ThemeButtonComponent
+    ThemeButtonComponent,
+    ModeComponent
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
