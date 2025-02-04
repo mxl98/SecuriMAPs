@@ -22,7 +22,6 @@ export class ModeComponent {
 
   private findMode(): number {
     let currentMode = this.MODES.get(this.mode);
-    if (currentMode != undefined) return currentMode;
-    return 0;
+    return currentMode ? currentMode : 0;
   }
 }
