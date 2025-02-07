@@ -303,6 +303,12 @@ svg {
     }
 }
 
+@media (max-width: $mobile-maxwidth) {
+    #sidebar, .sidebar-drawer {
+        display: none;
+    }
+}
+
 /*
 =============================
 2.5 NAVBAR STYLES
