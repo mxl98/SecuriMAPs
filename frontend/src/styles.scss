@@ -17,7 +17,9 @@
 */
 
 $map-height: 100vh;
+$map-width: 100vw;
 $sidebar-width: 100px;
+$sidebar-height: 100px;
 
 $z-overmap: 1000; // pretty high, doesn't display over map otherwise
 
@@ -125,7 +127,19 @@ svg {
 
 @media (max-width: $mobile-maxwidth) {
     .menu-container {
-        position: static;
+        position: absolute;
+        left: auto;
+        top: auto;
+        bottom: 0;
+        right: 0;
+    
+        &[aria-expanded="true"] .button-navbar {
+            bottom: calc($sidebar-height + 20px);
+        }
+    
+        &[aria-expanded="false"] .button-navbar {
+            bottom: 20px;
+        }
     }
 }
 
@@ -156,6 +170,24 @@ svg {
     }
     to {
         left: 0;
+    }
+}
+
+@keyframes mobile-menu-retract {
+    from {
+        bottom: $sidebar-height;
+    }
+    to {
+        bottom: 0;
+    }
+}
+
+@keyframes mobile-menu-expand {
+    from {
+        bottom: -$sidebar-height;
+    }
+    to {
+        bottom: 0;
     }
 }
 
@@ -303,9 +335,49 @@ svg {
     }
 }
 
+@media (min-width: $mobile-maxwidth) {
+    .mobile {
+        display: none !important;
+    }
+}
+
 @media (max-width: $mobile-maxwidth) {
+    .sidebar-container {
+        position: absolute;
+        top: auto;
+        left: auto;
+        bottom: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        height: calc($sidebar-height - 2em); // makes the map flow under the sidebar corners
+        width: calc($map-width - 2em);
+        padding: 1em;
+        z-index: $z-overmap;
+
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+
+        color: light-dark(#222, $white-lighter);
+        background: light-dark($white-lightest, #232323);
+        box-shadow: 0px 2px 5px $gray-light;
+    }
+
     #sidebar, .sidebar-drawer {
         display: none;
+    }
+
+    .mobile-hamburger {
+        margin: 12px;
+        position: absolute;
+        top: 0px;
+        display: flex;
+
+        z-index: $z-overmap;
+        width: $button-large;
+        height: $button-large;
+
+        background: white;
     }
 }
 
@@ -331,7 +403,7 @@ svg {
     .button-navbar {
         left: auto;
         top: auto;
-        bottom: 0px;
+        bottom: $sidebar-height;
         right: 0px;
 
         flex-direction: column-reverse;

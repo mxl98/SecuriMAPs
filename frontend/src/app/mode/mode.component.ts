@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CollisionModeService } from '../collision-mode.service';
+import { ModeService } from '../mode.service';
 
 @Component({
   selector: 'app-mode',
@@ -10,14 +10,14 @@ import { CollisionModeService } from '../collision-mode.service';
   styleUrl: './mode.component.scss'
 })
 export class ModeComponent {
-  private _collisionModeService: CollisionModeService;
+  _modeService: ModeService;
   private MODES: Map<string, number> = new Map<string, number>([
     ['Collision', 0]
   ]);
   @Input() mode: string = '';
 
-  constructor(collisionModeService : CollisionModeService) {
-    this._collisionModeService = collisionModeService;
+  constructor(modeService: ModeService) {
+    this._modeService = modeService;
   }
 
   private findMode(): number {

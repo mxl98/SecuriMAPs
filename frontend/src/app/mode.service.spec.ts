@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CollisionModeService } from './collision-mode.service';
+import { ModeService } from './mode.service';
 
-describe('CollisionModeService', () => {
-  let service: CollisionModeService;
+describe('ModeService', () => {
+  let service: ModeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CollisionModeService);
+    service = TestBed.inject(ModeService);
   });
 
   it('should be created', () => {
