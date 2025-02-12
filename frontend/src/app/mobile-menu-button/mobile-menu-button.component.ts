@@ -10,12 +10,21 @@ import { MobileMenuService } from '../mobile-menu.service';
 })
 export class MobileMenuButtonComponent {
   _mobileMenuService: MobileMenuService;
+  private isExpanded : boolean = true;
 
   constructor(mobileMenuService: MobileMenuService) {
     this._mobileMenuService = mobileMenuService;
   }
 
   toggleMobileSidebar() {
-    this._mobileMenuService.toggleMobileSidebar();
+    let sidebar = document.getElementById('mobile-sidebar');
+    let menu = document.getElementById('menu');
+
+    this.isExpanded = sidebar?.getAttribute('aria-expanded') === 'true';
+
+    this._mobileMenuService.toggleMobileSidebar(this.isExpanded);
+
+    sidebar?.setAttribute('aria-expanded', !this.isExpanded + "");
+    menu?.setAttribute('aria-expanded', !this.isExpanded + "");
   }
 }

@@ -134,11 +134,13 @@ svg {
         right: 0;
     
         &[aria-expanded="true"] .button-navbar {
-            bottom: calc($sidebar-height + 20px);
+            left: auto;
+            bottom: $sidebar-height;
         }
     
         &[aria-expanded="false"] .button-navbar {
-            bottom: 20px;
+            left: auto;
+            bottom: 0px;
         }
     }
 }
@@ -151,6 +153,18 @@ svg {
 
 .menu-expand {
     animation-name: menu-expand;
+    animation-duration: 200ms;
+    animation-timing-function: ease;
+}
+
+.mobile-menu-retract {
+    animation-name: mobile-menu-retract;
+    animation-duration: 200ms;
+    animation-timing-function: ease;
+}
+
+.mobile-menu-expand {
+    animation-name: mobile-menu-expand;
     animation-duration: 200ms;
     animation-timing-function: ease;
 }
@@ -175,7 +189,7 @@ svg {
 
 @keyframes mobile-menu-retract {
     from {
-        bottom: $sidebar-height;
+        bottom: -$sidebar-height;
     }
     to {
         bottom: 0;
@@ -184,7 +198,7 @@ svg {
 
 @keyframes mobile-menu-expand {
     from {
-        bottom: -$sidebar-height;
+        bottom: $sidebar-height;
     }
     to {
         bottom: 0;
@@ -361,6 +375,17 @@ svg {
         color: light-dark(#222, $white-lighter);
         background: light-dark($white-lightest, #232323);
         box-shadow: 0px 2px 5px $gray-light;
+
+        &[aria-expanded="true"] {
+            & + .sidebar-drawer {
+                left: auto; 
+            }
+        }
+    
+        &[aria-expanded="false"] {
+            left: auto;
+            bottom: -$sidebar-height;
+        }
     }
 
     #sidebar, .sidebar-drawer {
