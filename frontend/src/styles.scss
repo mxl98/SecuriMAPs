@@ -19,7 +19,7 @@
 $map-height: 100vh;
 $map-width: 100vw;
 $sidebar-width: 100px;
-$sidebar-height: 100px;
+$sidebar-height: 140px;
 
 $z-overmap: 1000; // pretty high, doesn't display over map otherwise
 $z-tooltip: 1010; // should be displayed at all times
@@ -391,6 +391,18 @@ svg {
 
     #sidebar, .sidebar-drawer {
         display: none;
+    }
+
+    .sidebar-middle {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-evenly;
+    }
+
+    .sidebar-element {
+        &:first-of-type {
+            margin: 5px;
+        }
     }
 
     .mobile-hamburger {
