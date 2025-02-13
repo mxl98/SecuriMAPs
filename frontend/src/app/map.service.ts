@@ -20,6 +20,10 @@ export class MapService {
     private map: L.Map | undefined;
     private isDarkMode: boolean = false;
 
+    private dataUrls = {
+      'temp':'data/geojson/collisions_routieres.geojson'
+    }
+
   constructor(mapThemeService: MapThemeService) {
     this._mapThemeService = mapThemeService;
     // i'd rather work using light mode, will uncomment when finished
