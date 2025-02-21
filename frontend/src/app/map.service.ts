@@ -116,9 +116,10 @@ export class MapService {
       points = results;
       console.log(points);
       this.heatLayer = (L as any).heatLayer(points, {
-        radius: 20,
+        radius: 15,
         blur: 15,
         maxZoom: 19,
+        gradient: {0.4: 'blue', 0.8: 'yellow', 1: 'red'},
       });
       this.addHeatLayer();
     });
