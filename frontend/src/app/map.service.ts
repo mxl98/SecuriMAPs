@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import L from 'leaflet';
+import L, { LatLng } from 'leaflet';
 import { MapThemeService } from './map-theme.service';
+import { GeoJSONService } from './geo-json.service';
+import 'leaflet.heat';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +15,19 @@ import { MapThemeService } from './map-theme.service';
  */
 export class MapService {
   private _mapThemeService: MapThemeService;
+  private _geoJsonService: GeoJSONService;
   private mapboxUrls = {
       'light': `https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`,
       'dark':  `https://api.mapbox.com/styles/v1/${ environment.mapboxUsername }/cm4ubpdkk00aa01qpgd9ahtfi/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`
     };
     private centerPoint = new L.LatLng(45.5, -73.57);
     private map: L.Map | undefined;
+    private heatLayer: any;
     private isDarkMode: boolean = false;
 
-    private dataUrls = {
-      'temp':'data/geojson/collisions_routieres.geojson'
-    }
-
-  constructor(mapThemeService: MapThemeService) {
+  constructor(mapThemeService: MapThemeService, geoJsonService: GeoJSONService) {
     this._mapThemeService = mapThemeService;
-    // i'd rather work using light mode, will uncomment when finished
-    //this.isDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    this._geoJsonService = geoJsonService;
   }
 
   getMap(): L.Map | undefined {
@@ -70,6 +70,8 @@ export class MapService {
     const mapboxTiles = this.generateMapTiles();
 
     mapboxTiles.addTo(this.map);
+
+    this.setHeatLayer();
     
     this._mapThemeService.isDarkMode$.subscribe((isDarkMode) => {
       if (!this.map) return;
@@ -81,7 +83,7 @@ export class MapService {
   }
 
   /**
-   * Updates the map TileLayer according to the active theme.
+   * Generates the map TileLayer according to the active theme.
    * @param map the map to update
    * @returns the updated map
    */
@@ -95,6 +97,41 @@ export class MapService {
     });
     
     return mapboxTiles;
+  }
+
+  /**
+   * Gets the array of LatLng coordinates from the geojson service
+   * @returns an array of points
+   */
+  async getHeatmapPoints(): Promise<L.LatLng[]> {
+    return await this._geoJsonService.getLatLngFromCoordinates();
+  }
+
+  /**
+   * Sets a value to the heatLayer variable
+   */
+  setHeatLayer(): void {
+    let points: L.LatLng[] = [];
+    this.getHeatmapPoints().then(results => {
+      points = results;
+      console.log(points);
+      this.heatLayer = (L as any).heatLayer(points, {
+        radius: 20,
+        blur: 15,
+        maxZoom: 19,
+      });
+      this.addHeatLayer();
+    });
+  }
+
+  /**
+   * Adds the heatLayer to the map
+   * @returns 
+   */
+  addHeatLayer(): void {
+    if (!this.map) return;
+
+    this.heatLayer.addTo(this.map);
   }
 
   /**
