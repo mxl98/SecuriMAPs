@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResetButtonComponent } from './reset-button.component';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('ResetButtonComponent', () => {
   let component: ResetButtonComponent;
@@ -8,7 +9,10 @@ describe('ResetButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ResetButtonComponent]
+      imports: [ResetButtonComponent],
+      providers: [
+        provideHttpClient()
+      ]
     })
     .compileComponents();
 

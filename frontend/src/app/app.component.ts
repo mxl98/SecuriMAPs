@@ -15,5 +15,5 @@ import { MenuComponent } from './menu/menu.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'SecuriMAPs';
 }

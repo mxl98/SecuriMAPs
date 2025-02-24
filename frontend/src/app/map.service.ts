@@ -114,7 +114,6 @@ export class MapService {
     let points: L.LatLng[] = [];
     this.getHeatmapPoints().then(results => {
       points = results;
-      console.log(points);
       this.heatLayer = (L as any).heatLayer(points, {
         radius: 15,
         blur: 15,
