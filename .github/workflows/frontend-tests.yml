@@ -19,10 +19,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18 # Adjust if needed
+          node-version: 18
 
       - name: Install Dependencies
-        run: npm ci # Faster than npm install
+        run: npm ci
+        working-directory: ./frontend
 
       - name: Cache Node.js modules
         uses: actions/cache@v4
@@ -34,6 +35,7 @@ jobs:
 
       - name: Run Tests
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+        working-directory: ./frontend
         
       
 
