@@ -17,13 +17,16 @@ export class MapService {
   private _mapThemeService: MapThemeService;
   private _geoJsonService: GeoJSONService;
   private mapboxUrls = {
-      'light': `https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`,
-      'dark':  `https://api.mapbox.com/styles/v1/${ environment.mapboxUsername }/cm4ubpdkk00aa01qpgd9ahtfi/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`
-    };
-    private centerPoint = new L.LatLng(45.5, -73.57);
-    private map: L.Map | undefined;
-    private heatLayer: any;
-    private isDarkMode: boolean = false;
+    'light': `https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`,
+    'dark':  `https://api.mapbox.com/styles/v1/${ environment.mapboxUsername }/cm4ubpdkk00aa01qpgd9ahtfi/tiles/{z}/{x}/{y}?access_token=${ environment.mapboxToken }`
+  };
+  private geoJSONUrls = {
+    'collisions':'assets/data/geojson/collisions_routieres.geojson'
+  }
+  private centerPoint = new L.LatLng(45.5, -73.57);
+  private map: L.Map | undefined;
+  private heatLayer: any;
+  private isDarkMode: boolean = false;
 
   constructor(mapThemeService: MapThemeService, geoJsonService: GeoJSONService) {
     this._mapThemeService = mapThemeService;
@@ -104,7 +107,7 @@ export class MapService {
    * @returns an array of points
    */
   async getHeatmapPoints(): Promise<L.LatLng[]> {
-    return await this._geoJsonService.getLatLngFromCoordinates();
+    return await this._geoJsonService.getLatLngFromCoordinates(this.geoJSONUrls.collisions);
   }
 
   /**

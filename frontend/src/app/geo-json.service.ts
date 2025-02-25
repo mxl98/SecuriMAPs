@@ -13,9 +13,9 @@ export class GeoJSONService {
 
   constructor(private http: HttpClient) { }
 
-  async getLatLngFromCoordinates(): Promise<L.LatLng[]> {
+  async getLatLngFromCoordinates(fileUrl: string): Promise<L.LatLng[]> {
     let geoJson: L.LatLng[] = [];
-    await fetch(this.geoJSONUrls.collisions)
+    await fetch(fileUrl)
     .then(response => response.json())
     .then(data => {
       geoJson = this.extractCoordinates(data);
@@ -36,10 +36,6 @@ export class GeoJSONService {
       if (type === 'Point') {
         const [lon, lat] = feature.geometry.coordinates;
         latLngArray.push(L.latLng(lat, lon));
-      } else if (type === 'MultiPoint') {
-        feature.geometry.coordinates.forEach(([lon, lat]: number[]) => {
-          latLngArray.push(L.latLng(lat, lon));
-        });
       }
     });
     return latLngArray;
