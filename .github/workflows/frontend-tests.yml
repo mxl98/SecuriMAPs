@@ -35,7 +35,8 @@ jobs:
 
       - name: Create Environment File
         run: |
-          echo "export const environment = {" > src/environments/environment.ts
+          touch src/environments/environment.ts
+          echo "export const environment = {" >> src/environments/environment.ts
           echo "  production: true," >> src/environments/environment.ts
           echo "  mapboxToken: '${{ secrets.MAPBOX_TOKEN }}'," >> src/environments/environment.ts
           echo "  mapboxUsername: '${{ secrets.MAPBOX_USERNAME }}'," >> src/environments/environment.ts
