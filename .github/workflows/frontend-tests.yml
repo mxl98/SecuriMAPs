@@ -34,13 +34,14 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Create Environment File
-        working-directory: ./frontend
         run: |
+          mkdir -p src/environments
           echo "export const environment = {" >> src/environments/environment.ts
           echo "  production: true," >> src/environments/environment.ts
           echo "  mapboxToken: '${{ secrets.MAPBOX_TOKEN }}'," >> src/environments/environment.ts
           echo "  mapboxUsername: '${{ secrets.MAPBOX_USERNAME }}'," >> src/environments/environment.ts
           echo "};" >> src/environments/environment.ts
+        working-directory: ./frontend
 
       - name: Run Tests
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
