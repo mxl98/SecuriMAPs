@@ -12,7 +12,6 @@ export class MobileMenuService {
   }
 
   animateExpand() {
-    console.log("expanding");
     let menu = document.getElementById('menu');
 
     menu?.classList.remove('mobile-menu-expand');
@@ -20,7 +19,6 @@ export class MobileMenuService {
   }
 
   animateRetract() {
-    console.log("retract");
     let menu = document.getElementById('menu');
 
     menu?.classList.remove('mobile-menu-retract');

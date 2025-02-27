@@ -27,7 +27,7 @@ describe('GeoJSONService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return a correct LatLng array', async () => {
+  it('#getLatLngFromCoordinates should return value from file', async () => {
     let resultLatLngArray: L.LatLng[] = await service.getLatLngFromCoordinates(testFiles.LatLng);
     expect(resultLatLngArray).toEqual(expectedLatLngArray);
   })
