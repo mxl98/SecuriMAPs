@@ -8,7 +8,7 @@ A single-page application (SPA). Its main purpose is to indicate dangerous roads
 N.B. this application is a Work-In-Progress, and the current state may not reflect the final product or guarantee one.
 
 ## Tech Stack
-- Frontend: AngularJS
+- Frontend: Angular v18
 - Backend: .NET Core, Python
 - Database: MySQL
 
@@ -19,3 +19,18 @@ Nuget packages used in the app
 | Package                          | NuGet           |
 | ---------------------------------|:---------------:|
 | Swashbuckle.AspNetCore           | [![NuGet Swashbuckle.AspNetCore](https://img.shields.io/nuget/v/Swashbuckle.AspNetCore.svg?style=flat)](https://www.nuget.org/packages/swashbuckle.aspnetcore/) |
+
+## Features
+### Current
+- Interactible map
+- Continuous support for mobile
+- Dark mode with high contrast
+- Heatmap display of road collisions[^1]
+
+### Upcoming
+- Replacing frontend data treatment with backend and database for storage
+- Toggleable layers
+- More layers
+
+## Notes
+[^1]: [#] Ville de Montréal, Collisions routières, Montréal: Open Data City of Montreal, 2025. [Dataset]. Available: https://donnees.montreal.ca/en/dataset/collisions-routieres. [consulted on March 04, 2025].
