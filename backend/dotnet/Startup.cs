@@ -1,11 +1,22 @@
+using System.Threading.Tasks;
+
 public class Startup
 {
     public void ConfigureServices(IServiceCollection services, IConfigurationManager config)
     {
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+        services.AddHttpClient<IApiClientService, ApiClientService>();
+        
+        services.AddScoped<ApiClientService>();
 
-        services.AddControllersWithViews();
+        services.AddControllers();
+    }
+
+    public void ConfigureLogging(ILoggingBuilder logging)
+    {
+        logging.ClearProviders();
+        logging.AddConsole();
     }
 
     public void Configure(WebApplication app, IWebHostEnvironment env)
@@ -35,5 +46,14 @@ public class Startup
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
+    }
+
+    public async void OnStartupAsync(WebApplication app)
+    {
+        using (var scope = app.Services.CreateScope())
+        {
+            var apiService = scope.ServiceProvider.GetRequiredService<ApiClientService>();
+            var data = await apiService.HttpGetAsync("https://example.com/data");
+        }
     }
 }

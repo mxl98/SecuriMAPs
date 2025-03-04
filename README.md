@@ -5,7 +5,7 @@ Repo for SecuriMAPs app
 
 A single-page application (SPA). Its main purpose is to indicate dangerous roads and intersections in cities by displaying a heatmap of recorded road collisions and accidents, and predicting danger zones through machine learning, with the goal of improving road security and danger visibility.
 
-N.B. this application is a personnal project dedicated to learning the stack and a Work-In-Progress. The current state may not reflect the final product or guarantee one.
+N.B. this application is a personnal project dedicated to learning the technologies and a Work-In-Progress. The current state may not reflect the final product or guarantee one.
 
 ## Tech Stack
 - Frontend: Angular v18
@@ -19,6 +19,7 @@ Nuget packages used in the app
 | Package                          | NuGet           |
 | ---------------------------------|:---------------:|
 | Swashbuckle.AspNetCore           | [![NuGet Swashbuckle.AspNetCore](https://img.shields.io/nuget/v/Swashbuckle.AspNetCore.svg?style=flat)](https://www.nuget.org/packages/swashbuckle.aspnetcore/) |
+| CSVHelper                        | [![NuGet CsvHelper](https://img.shields.io/nuget/v/CsvHelper.svg?style=flat)](https://www.nuget.org/packages/CsvHelper/) |
 
 ## Features
 ### Current
