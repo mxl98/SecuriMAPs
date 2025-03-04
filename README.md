@@ -3,9 +3,9 @@
 # SecuriMAPs
 Repo for SecuriMAPs app
 
-A single-page application (SPA). Its main purpose is to indicate dangerous roads and intersections in cities by displaying a heatmap of recorded road collisions and accidents, and predicting danger zones through machine learning.
+A single-page application (SPA). Its main purpose is to indicate dangerous roads and intersections in cities by displaying a heatmap of recorded road collisions and accidents, and predicting danger zones through machine learning, with the goal of improving road security and danger visibility.
 
-N.B. this application is a Work-In-Progress, and the current state may not reflect the final product or guarantee one.
+N.B. this application is a personnal project dedicated to learning the stack and a Work-In-Progress. The current state may not reflect the final product or guarantee one.
 
 ## Tech Stack
 - Frontend: Angular v18
