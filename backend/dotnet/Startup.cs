@@ -11,6 +11,7 @@ public class Startup
         services.AddScoped<ApiClientService>();
 
         services.AddControllers();
+        services.AddMvc();
     }
 
     public void ConfigureLogging(ILoggingBuilder logging)
