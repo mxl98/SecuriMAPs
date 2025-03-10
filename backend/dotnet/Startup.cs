@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 public class Startup
 {
@@ -9,9 +10,12 @@ public class Startup
         services.AddHttpClient<IApiClientService, ApiClientService>();
         
         services.AddScoped<ApiClientService>();
+        services.AddScoped<ApiClientConfigService>();
 
         services.AddControllers();
         services.AddMvc();
+
+        services.Configure<SourceUrlsOptions>(config.GetSection(SourceUrlsOptions.SourceUrls));
     }
 
     public void ConfigureLogging(ILoggingBuilder logging)
@@ -54,7 +58,10 @@ public class Startup
         using (var scope = app.Services.CreateScope())
         {
             var apiService = scope.ServiceProvider.GetRequiredService<ApiClientService>();
-            var data = await apiService.HttpGetAsync("https://example.com/data");
+            var configService = scope.ServiceProvider.GetRequiredService<ApiClientConfigService>();
+            
+            var sourceUrls = configService.getSourceUrls();
+            var data = await apiService.HttpGetAsync(sourceUrls["Collision"]);
         }
     }
 }
